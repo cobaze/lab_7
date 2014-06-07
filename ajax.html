@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax | Lab 8</title>
+</head>
+<body>
+
+	<nav id="main_nav">
+		<a href="modules.html#content1" title="content1">Content 1</a>
+		<a href="modules.html#content2" title="content2">Content 2</a>
+		<a href="modules.html#content3" title="content3">Content 3</a>
+		<a href="modules.html#content4" title="content4">Content 4</a>
+	</nav>
+	
+	<div id="dynamic"></div> <!--container for modules div-->
+	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+	$('#main_nav a').click(function(e){
+		e.preventDefault();
+		var module = e.target.title;
+		$('#dynamic').fadeOut('fast',function(){
+			$('#dynamic').load('modules.html #' + module, function(){
+				$('#dynamic').fadeIn('slow');
+			});
+		});	
+	});
+</script>	
+</body>
+</html>
